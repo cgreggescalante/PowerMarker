@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {ActivityService} from "../activity-service/activity.service";
 import {Activity} from "../activity/activity";
+import {Point} from "../point/point";
 
 @Component({
   selector: 'app-activity-detail',
@@ -12,6 +13,7 @@ export class ActivityDetailComponent implements OnInit {
   id: Number;
 
   activity: Activity | undefined;
+  points: Point[] = [];
 
   constructor(route: ActivatedRoute, private activityService: ActivityService) {
     this.id = route.snapshot.params['id'];
@@ -22,7 +24,12 @@ export class ActivityDetailComponent implements OnInit {
       next: activity => {
         this.activity = activity;
       }
-    })
-  }
+    });
 
+    this.activityService.getPoints(this.id).subscribe({
+      next: points => {
+        this.points = points;
+      }
+    });
+  }
 }

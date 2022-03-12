@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient} from "@angular/common/http";
 import { Activity } from "../activity/activity";
 import { of } from "rxjs";
+import {Point} from "../point/point";
 
 @Injectable({
   providedIn: 'root'
@@ -34,5 +35,18 @@ export class ActivityService {
     });
 
     return of(activity);
+  }
+
+  getPoints(id: Number) {
+    const points: Point[] = [];
+
+    this.http.get(this.url + '/' + id + '/points').subscribe((data) => {
+      Object.entries(data).forEach((value) => {
+        const point: Point = Object.assign(new Point(), value);
+        points.push(point);
+      });
+    });
+
+    return of(points);
   }
 }
