@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Activity } from "../activity/activity";
 
 @Component({
   selector: 'app-activity-list-entry',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./activity-list-entry.component.css']
 })
 export class ActivityListEntryComponent implements OnInit {
+  @Input() activity: Activity | undefined;
 
   constructor() { }
 
