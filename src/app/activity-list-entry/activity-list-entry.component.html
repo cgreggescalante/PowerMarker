@@ -4,5 +4,16 @@
       <h5><a>{{ activity.name }}</a></h5>
       <h6>{{ activity.getDate() }}</h6>
     </div>
+    <div class="snapshot">
+      <span>
+        Time: {{ activity.getMovingTime() }}
+      </span>
+      <span>
+        Power: {{ activity.getAveragePower() }}
+      </span>
+      <span>
+        Distance: {{ activity.getDistance() }}
+      </span>
+    </div>
   </div>
 </div>

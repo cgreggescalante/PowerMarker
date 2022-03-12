@@ -3,10 +3,10 @@ export class Activity {
   activity_id: number | undefined;
   name: string | undefined;
   critical_power: number | undefined;
-  start_time: number | undefined;
-  moving_time: number | undefined;
-  elapsed_time: number | undefined;
-  distance: number | undefined;
+  start_time: number = 0;
+  moving_time: number = 0;
+  elapsed_time: number = 0;
+  distance: number = 0;
   elevation_gain: number | undefined;
   elevation_loss: number | undefined;
   max_elevation: number | undefined;
@@ -45,21 +45,34 @@ export class Activity {
   wind_gust: number | undefined;
   icon: string | undefined;
 
-  getDate = () => {
-    if (this.start_time) {
-      const d: Date = new Date(this.start_time * 1000);
-      return d.toDateString();
+  getDate() {
+    const d: Date = new Date(this.start_time * 1000);
+    return d.toDateString();
+  }
+
+  getTime() {
+    const d: Date = new Date(this.start_time * 1000);
+    return d.toLocaleTimeString();
+  }
+
+  getMovingTime() {
+    let seconds = this.moving_time;
+    const hours = (seconds / 3600).toFixed(0);
+    seconds %= 3600;
+    const minutes = (seconds / 60).toFixed(0);
+    seconds %= 60;
+    if (hours !== "0") {
+      return hours + ":" + minutes + ":" + seconds;
     } else {
-      return "";
+      return minutes + ":" + seconds;
     }
   }
 
-  getTime = () => {
-    if (this.start_time) {
-      const d: Date = new Date(this.start_time * 1000);
-      return d.toLocaleTimeString();
-    } else {
-      return "";
-    }
+  getDistance() {
+    return (this.distance / 1609.34).toFixed(2);
+  }
+
+  getAveragePower() {
+    return (this.average_power)?.toFixed(0);
   }
 }
