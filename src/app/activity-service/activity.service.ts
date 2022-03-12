@@ -25,4 +25,14 @@ export class ActivityService {
 
     return of(activities);
   }
+
+  getActivity(id: Number) {
+    let activity: Activity = new Activity();
+
+    this.http.get(this.url + "/" + id).subscribe((data) => {
+      Object.assign(activity, data);
+    });
+
+    return of(activity);
+  }
 }

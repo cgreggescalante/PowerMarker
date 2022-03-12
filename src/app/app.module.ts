@@ -6,11 +6,13 @@ import { NavComponent } from "./nav/nav.component";
 import { HttpClientModule } from "@angular/common/http";
 import { ActivityService } from "./activity-service/activity.service";
 import {AppRoutingModule} from "./app-routing/app-routing.module";
+import { ActivityDetailComponent } from './activity-detail/activity-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent
+    NavComponent,
+    ActivityDetailComponent
   ],
   imports: [
     BrowserModule,
