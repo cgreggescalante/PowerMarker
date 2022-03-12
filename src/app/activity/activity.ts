@@ -1,97 +1,65 @@
 export class Activity {
-  id: Number | undefined;
-  activity_id: Number | undefined;
+  id: number | undefined;
+  activity_id: number | undefined;
   name: string | undefined;
-  critical_power: Number | undefined;
-  start_time: Number | undefined;
-  moving_time: Number | undefined;
-  elapsed_time: Number | undefined;
-  distance: Number | undefined;
-  elevation_gain: Number | undefined;
-  elevation_loss: Number | undefined;
-  max_elevation: Number | undefined;
-  min_elevation: Number | undefined;
-  average_speed: Number | undefined;
-  max_speed: Number | undefined;
-  average_cadence: Number | undefined;
-  max_cadence: Number | undefined;
-  min_cadence: Number | undefined;
-  average_stride_length: Number | undefined;
-  max_stride_length: Number | undefined;
-  min_stride_length: Number | undefined;
-  average_ground_time: Number | undefined;
-  max_ground_time: Number | undefined;
-  min_ground_time: Number | undefined;
-  average_oscillation: Number | undefined;
-  max_oscillation: Number | undefined;
-  min_oscillation: Number | undefined;
-  average_power: Number | undefined;
-  max_power: Number | undefined;
-  average_heart_rate: Number | undefined;
-  max_heart_rate: Number | undefined;
-  average_leg_spring: Number | undefined;
-  stress: Number | undefined;
-  max_vertical_stiffness: Number | undefined;
-  time_in_zone_one: Number | undefined;
-  time_in_zone_two: Number | undefined;
-  time_in_zone_three: Number | undefined;
-  time_in_zone_four: Number | undefined;
-  time_in_zone_five: Number | undefined;
-  temperature: Number | undefined;
-  humidity: Number | undefined;
-  dew_point: Number | undefined;
-  wind_bearing: Number | undefined;
-  wind_speed: Number | undefined;
-  wind_gust: Number | undefined;
+  critical_power: number | undefined;
+  start_time: number | undefined;
+  moving_time: number | undefined;
+  elapsed_time: number | undefined;
+  distance: number | undefined;
+  elevation_gain: number | undefined;
+  elevation_loss: number | undefined;
+  max_elevation: number | undefined;
+  min_elevation: number | undefined;
+  average_speed: number | undefined;
+  max_speed: number | undefined;
+  average_cadence: number | undefined;
+  max_cadence: number | undefined;
+  min_cadence: number | undefined;
+  average_stride_length: number | undefined;
+  max_stride_length: number | undefined;
+  min_stride_length: number | undefined;
+  average_ground_time: number | undefined;
+  max_ground_time: number | undefined;
+  min_ground_time: number | undefined;
+  average_oscillation: number | undefined;
+  max_oscillation: number | undefined;
+  min_oscillation: number | undefined;
+  average_power: number | undefined;
+  max_power: number | undefined;
+  average_heart_rate: number | undefined;
+  max_heart_rate: number | undefined;
+  average_leg_spring: number | undefined;
+  stress: number = -1;
+  max_vertical_stiffness: number | undefined;
+  time_in_zone_one: number | undefined;
+  time_in_zone_two: number | undefined;
+  time_in_zone_three: number | undefined;
+  time_in_zone_four: number | undefined;
+  time_in_zone_five: number | undefined;
+  temperature: number | undefined;
+  humidity: number | undefined;
+  dew_point: number | undefined;
+  wind_bearing: number | undefined;
+  wind_speed: number | undefined;
+  wind_gust: number | undefined;
   icon: string | undefined;
-  //
-  // deserialize(input: Object): Activity {
-  //   this.id = input.id;
-  //   this.activity_id = input.activity_id;
-  //   this.name = input.name;
-  //   this.critical_power = input.critical_power;
-  //   this.start_time = input.start_time;
-  //   this.moving_time = input.moving_time;
-  //   this.elapsed_time = input.elapsed_time;
-  //   this.distance = input.distance;
-  //   this.elevation_gain = input.elevation_gain;
-  //   this.elevation_loss = input.elevation_loss;
-  //   this.max_elevation = input.max_elevation;
-  //   this.min_elevation = input.min_elevation;
-  //   this.average_speed = input.average_speed;
-  //   this.max_speed = input.max_speed;
-  //   this.average_cadence = input.average_cadence;
-  //   this.max_cadence = input.max_cadence;
-  //   this.min_cadence = input.min_cadence;
-  //   this.average_stride_length = input.average_stride_length;
-  //   this.max_stride_length = input.max_stride_length;
-  //   this.min_stride_length = input.min_stride_length;
-  //   this.average_ground_time = input.average_ground_time;
-  //   this.max_ground_time = input.max_ground_time;
-  //   this.min_ground_time = input.min_ground_time;
-  //   this.average_oscillation = input.average_oscillation;
-  //   this.max_oscillation = input.max_oscillation;
-  //   this.min_oscillation = input.min_oscillation;
-  //   this.average_power = input.average_power;
-  //   this.max_power = input.max_power;
-  //   this.average_heart_rate = input.average_heart_rate;
-  //   this.max_heart_rate = input.max_heart_rate;
-  //   this.average_leg_spring = input.average_leg_spring;
-  //   this.stress = input.stress;
-  //   this.max_vertical_stiffness = input.max_vertical_stiffness;
-  //   this.time_in_zone_one = input.time_in_zone_one;
-  //   this.time_in_zone_two = input.time_in_zone_two;
-  //   this.time_in_zone_three = input.time_in_zone_three;
-  //   this.time_in_zone_four = input.time_in_zone_four;
-  //   this.time_in_zone_five = input.time_in_zone_five;
-  //   this.temperature = input.temperature;
-  //   this.humidity = input.humidity;
-  //   this.dew_point = input.dew_point;
-  //   this.wind_bearing = input.wind_bearing;
-  //   this.wind_speed = input.wind_speed;
-  //   this.wind_gust = input.wind_gust;
-  //   this.icon = input.icon;
-  //
-  //   return this;
-  // }
+
+  getDate = () => {
+    if (this.start_time) {
+      const d: Date = new Date(this.start_time * 1000);
+      return d.toDateString();
+    } else {
+      return "";
+    }
+  }
+
+  getTime = () => {
+    if (this.start_time) {
+      const d: Date = new Date(this.start_time * 1000);
+      return d.toLocaleTimeString();
+    } else {
+      return "";
+    }
+  }
 }
