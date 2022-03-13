@@ -4,5 +4,12 @@
   <h5>{{ activity.getDistance() }}mi</h5>
   <h5>{{ activity.getAveragePower() }}w</h5>
   <h5>{{ activity.getMovingTime() }}</h5>
+
+  <div *ngFor="let dist of distributions">
+    {{ dist.type }}
+    <div *ngFor="let bucket of dist.buckets">
+      {{ bucket.bucket }} : {{ bucket.count }}
+    </div>
+  </div>
 </div>
 

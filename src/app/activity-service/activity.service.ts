@@ -1,8 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from "@angular/common/http";
 import { Activity } from "../activity/activity";
-import { of } from "rxjs";
+import {of} from "rxjs";
 import {Point} from "../point/point";
+import {Distribution} from "../distribution/distribution";
+
+type ActivityData = {
+  summary: Activity;
+  distributions: Distribution[]
+}
 
 @Injectable({
   providedIn: 'root'
@@ -27,15 +33,20 @@ export class ActivityService {
     return of(activities);
   }
 
-  getActivity(id: Number) {
+  async getActivity(id: Number): Promise<ActivityData> {
     let activity: Activity = new Activity();
+    const powerDistribution: Distribution = new Distribution('Power');
 
-    this.http.get(this.url + "/" + id).subscribe((data) => {
-      console.log(data);
-      Object.assign(activity, data);
-    });
+    const response = await fetch(this.url + '/' + id);
+    const data = await response.json();
 
-    return of(activity);
+    Object.assign(activity, data.summary);
+    powerDistribution.setBuckets(data.power_distribution);
+
+    return {
+      summary: activity,
+      distributions: [powerDistribution]
+    };
   }
 
   getPoints(id: Number) {
