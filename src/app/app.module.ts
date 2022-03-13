@@ -7,17 +7,21 @@ import { HttpClientModule } from "@angular/common/http";
 import { ActivityService } from "./activity-service/activity.service";
 import { AppRoutingModule } from "./app-routing/app-routing.module";
 import { ActivityDetailComponent } from './activity-detail/activity-detail.component';
+import { DistributionChartComponent } from './distribution-chart/distribution-chart.component';
+import {NgChartsModule} from "ng2-charts";
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    ActivityDetailComponent
+    ActivityDetailComponent,
+    DistributionChartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgChartsModule
   ],
   providers: [
     ActivityService
