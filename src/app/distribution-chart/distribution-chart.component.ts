@@ -16,7 +16,7 @@ export class DistributionChartComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.distribution) {
-      const canvas: HTMLElement | null = document.getElementById("myChart");
+      const canvas: HTMLElement | null = document.getElementById("chart");
       // @ts-ignore
       const context = canvas.getContext("2d");
       new Chart(context, {

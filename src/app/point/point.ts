@@ -8,9 +8,9 @@ export class Point {
   leg_spring: number | undefined;
   stress: number | undefined;
   vertical_ground_reaction_force: number | undefined;
-  timestamp: number | undefined;
+  timestamp: number = 0;
   power: number = 0;
-  heart_rate: number | undefined;
+  heart_rate: number = 0;
   cadence: number | undefined;
   stride_length: number | undefined;
   distance: number | undefined;
@@ -20,4 +20,9 @@ export class Point {
   latitude: number | undefined;
   longitude: number | undefined;
   power_duration: number | undefined;
+
+  getTime(): string {
+    const d: Date = new Date(this.timestamp * 1000);
+    return d.toLocaleTimeString();
+  }
 }

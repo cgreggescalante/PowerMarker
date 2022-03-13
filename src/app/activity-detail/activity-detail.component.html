@@ -5,6 +5,10 @@
   <h5>{{ activity.getAveragePower() }}w</h5>
   <h5>{{ activity.getMovingTime() }}</h5>
 
+
   <app-distribution-chart *ngFor="let dist of distributions" [distribution]="dist"></app-distribution-chart>
 </div>
 
+<div *ngIf="points.length > 0">
+  <app-point-chart [points]="points"></app-point-chart>
+</div>
