@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from "@angular/common/http";
 import { Activity } from "../activity/activity";
-import {of} from "rxjs";
 import {Point} from "../point/point";
 import {Distribution} from "../distribution/distribution";
 
@@ -16,21 +14,20 @@ type ActivityData = {
 export class ActivityService {
   private url: string = 'http://127.0.0.1:3000/activity';
 
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor() { }
 
-  getActivities() {
+  async getActivities(): Promise<Activity[]> {
     const activities: Activity[] = [];
 
-    this.http.get(this.url).subscribe((data) => {
-      Object.entries(data).forEach(entry => {
-          const activity: Activity = Object.assign(new Activity(), entry[1]);
-          activities.push(activity);
-      });
+    const response = await fetch(this.url);
+    const data = await response.json();
+
+    Object.entries(data).forEach(entry => {
+      const activity: Activity = Object.assign(new Activity(), entry[1]);
+      activities.push(activity);
     });
 
-    return of(activities);
+    return activities;
   }
 
   async getActivity(id: Number): Promise<ActivityData> {
@@ -49,16 +46,17 @@ export class ActivityService {
     };
   }
 
-  getPoints(id: Number) {
+  async getPoints(id: Number): Promise<Point[]> {
     const points: Point[] = [];
 
-    this.http.get(this.url + '/' + id + '/points').subscribe((data) => {
-      Object.entries(data).forEach((value) => {
-        const point: Point = Object.assign(new Point(), value[1]);
-        points.push(point);
-      });
-    });
+    const response = await fetch(this.url + '/' + id + '/points');
+    const data = await response.json();
 
-    return of(points);
+    Object.entries(data).forEach((value => {
+      const point: Point = Object.assign(new Point(), value[1]);
+      points.push(point);
+    }));
+
+    return points;
   }
 }

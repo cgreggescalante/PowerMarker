@@ -30,10 +30,9 @@ export class ActivityDetailComponent implements OnInit {
       }
     );
 
-    this.activityService.getPoints(this.id).subscribe({
-      next: points => {
-        this.points = points;
-      }
-    })
+    this.activityService.getPoints(this.id).then(
+      data =>
+        this.points = data
+    );
   }
 }

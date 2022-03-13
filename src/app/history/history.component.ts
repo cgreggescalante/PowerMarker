@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Activity } from "../activity/activity";
 import { ActivityService } from "../activity-service/activity.service";
-import { BehaviorSubject, Observable, switchMap } from "rxjs";
+import { BehaviorSubject, switchMap } from "rxjs";
 
 @Component({
   selector: 'app-history',
@@ -11,15 +11,21 @@ import { BehaviorSubject, Observable, switchMap } from "rxjs";
 })
 export class HistoryComponent implements OnInit {
   per_page: Number = 25;
-  activities$: Observable<Activity[]> = new Observable<Activity[]>();
+  activities: Activity[] = [];
 
   refreshActivities$ = new BehaviorSubject<boolean>(true);
 
   constructor(private activityService: ActivityService) {
-    this.activities$ = this.refreshActivities$.pipe(switchMap(_ => this.activityService.getActivities()));
+    this.refreshActivities$.pipe(switchMap(_ => this.activityService.getActivities().then(
+      activities =>
+        this.activities = activities
+    )));
   }
 
   ngOnInit() {
-    this.activities$ = this.activityService.getActivities();
+    this.activityService.getActivities().then(
+      activities =>
+        this.activities = activities
+    );
   }
 }
