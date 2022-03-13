@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {ActivityService} from "../activity-service/activity.service";
-import {Activity} from "../activity/activity";
-import {Point} from "../point/point";
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
+import { ActivityService } from "../activity-service/activity.service";
+import { Activity } from "../activity/activity";
+import { Point } from "../point/point";
+
 
 @Component({
   selector: 'app-activity-detail',
@@ -29,7 +30,8 @@ export class ActivityDetailComponent implements OnInit {
     this.activityService.getPoints(this.id).subscribe({
       next: points => {
         this.points = points;
+        console.log(points);
       }
-    });
+    })
   }
 }

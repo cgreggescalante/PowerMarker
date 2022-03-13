@@ -31,6 +31,7 @@ export class ActivityService {
     let activity: Activity = new Activity();
 
     this.http.get(this.url + "/" + id).subscribe((data) => {
+      console.log(data);
       Object.assign(activity, data);
     });
 
@@ -42,7 +43,7 @@ export class ActivityService {
 
     this.http.get(this.url + '/' + id + '/points').subscribe((data) => {
       Object.entries(data).forEach((value) => {
-        const point: Point = Object.assign(new Point(), value);
+        const point: Point = Object.assign(new Point(), value[1]);
         points.push(point);
       });
     });
