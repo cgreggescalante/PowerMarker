@@ -45,34 +45,41 @@ export class Activity {
   wind_gust: number | undefined;
   icon: string | undefined;
 
-  getDate() {
+  private static pad(n: number) {
+    const d: string = "0" + n.toString();
+    return d.substring(d.length - 2);
+  }
+
+  getDate(): string {
     const d: Date = new Date(this.start_time * 1000);
     return d.toDateString();
   }
 
-  getTime() {
+  getTime(): string {
     const d: Date = new Date(this.start_time * 1000);
     return d.toLocaleTimeString();
   }
 
-  getMovingTime() {
+  getMovingTime(): string {
     let seconds = this.moving_time;
-    const hours = (seconds / 3600).toFixed(0);
+    const hours = Math.floor(seconds / 3600);
     seconds %= 3600;
-    const minutes = (seconds / 60).toFixed(0);
+    const minutes = Math.floor(seconds / 60);
     seconds %= 60;
-    if (hours !== "0") {
-      return hours + ":" + minutes + ":" + seconds;
+    if (hours) {
+      return hours + ":" + Activity.pad(minutes) + ":" + Activity.pad(seconds);
+    } else if (minutes) {
+      return minutes + ":" + Activity.pad(seconds);
     } else {
-      return minutes + ":" + seconds;
+      return seconds.toString();
     }
   }
 
-  getDistance() {
+  getDistance(): string {
     return (this.distance / 1609.34).toFixed(2);
   }
 
-  getAveragePower() {
+  getAveragePower(): string | undefined {
     return (this.average_power)?.toFixed(0);
   }
 }
