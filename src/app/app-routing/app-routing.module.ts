@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from "../home/home.component";
-import { HistoryComponent } from "../history/history.component";
-import { ActivityListEntryComponent } from "../activity-list-entry/activity-list-entry.component";
 import { CommonModule } from "@angular/common";
-import {ActivityDetailComponent} from "../activity-detail/activity-detail.component";
+import { ActivityDetailComponent } from "../activity-detail/activity-detail.component";
+import { HistoryComponent } from "../history/history.component";
+import {HistoryModule} from "../history/history.module";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,10 +16,9 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     HomeComponent,
-    HistoryComponent,
-    ActivityListEntryComponent
+    HistoryComponent
   ],
-  imports: [RouterModule.forRoot(routes), CommonModule],
+  imports: [RouterModule.forRoot(routes), CommonModule, HistoryModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
