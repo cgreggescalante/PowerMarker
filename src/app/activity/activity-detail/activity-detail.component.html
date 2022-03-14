@@ -6,9 +6,9 @@
   <h5>{{ activity.getMovingTime() }}</h5>
 
 
-  <app-distribution-chart *ngFor="let dist of distributions" [distribution]="dist"></app-distribution-chart>
+  <activity-distribution-chart *ngFor="let dist of distributions" [distribution]="dist"></activity-distribution-chart>
 </div>
 
 <div *ngIf="points.length > 0">
-  <app-point-chart [points]="points"></app-point-chart>
+  <activity-point-chart [points]="points"></activity-point-chart>
 </div>

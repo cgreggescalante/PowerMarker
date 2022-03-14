@@ -1,7 +1,7 @@
 <div class="card" *ngIf="activity">
   <div class="card-body">
     <div class="title">
-      <h5><a href="activity/{{ activity.id }}">{{ activity.name }}</a></h5>
+      <h5><a class="nav-link" href="/activity/{{ activity.id }}">{{ activity.name }}</a></h5>
       <h6>{{ activity.getDate() }}</h6>
     </div>
     <div class="snapshot">

@@ -3,7 +3,7 @@ import { Distribution } from "../distribution/distribution";
 import { Chart } from "chart.js";
 
 @Component({
-  selector: 'app-distribution-chart',
+  selector: 'activity-distribution-chart',
   templateUrl: './distribution-chart.component.html',
   styleUrls: ['./distribution-chart.component.css']
 })

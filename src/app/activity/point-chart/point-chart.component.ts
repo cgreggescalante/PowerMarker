@@ -3,7 +3,7 @@ import { Point } from "../point/point";
 import { Chart } from "chart.js";
 
 @Component({
-  selector: 'app-point-chart',
+  selector: 'activity-point-chart',
   templateUrl: './point-chart.component.html',
   styleUrls: ['./point-chart.component.css']
 })

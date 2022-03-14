@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Activity } from "../../activity/activity";
-import { ActivityService } from "../../activity-service/activity.service";
+import { Activity } from "../../activity/activity/activity";
+import { ActivityService } from "../../activity/activity-service/activity.service";
 import { BehaviorSubject, switchMap } from "rxjs";
 
 @Component({

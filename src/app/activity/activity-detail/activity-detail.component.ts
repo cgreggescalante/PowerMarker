@@ -7,7 +7,7 @@ import {Distribution} from "../distribution/distribution";
 
 
 @Component({
-  selector: 'app-activity-detail',
+  selector: 'activity-activity-detail',
   templateUrl: './activity-detail.component.html',
   styleUrls: ['./activity-detail.component.css']
 })

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Activity } from "../activity/activity";
-import {Point} from "../point/point";
-import {Distribution} from "../distribution/distribution";
+import { Point } from "../point/point";
+import { Distribution } from "../distribution/distribution";
 
 type ActivityData = {
   summary: Activity;
