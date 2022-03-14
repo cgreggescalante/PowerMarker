@@ -10,9 +10,13 @@ import { ActivityDetailComponent } from './activity-detail/activity-detail.compo
 import { DistributionChartComponent } from './distribution-chart/distribution-chart.component';
 import { NgChartsModule } from "ng2-charts";
 import { PointChartComponent } from './point-chart/point-chart.component';
+import {HomeComponent} from "./home/home.component";
+import {HistoryComponent} from "./history/history.component";
 
 @NgModule({
   declarations: [
+    HomeComponent,
+    HistoryComponent,
     AppComponent,
     NavComponent,
     ActivityDetailComponent,
@@ -22,7 +26,6 @@ import { PointChartComponent } from './point-chart/point-chart.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
     NgChartsModule
   ],
   providers: [
